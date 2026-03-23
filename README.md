@@ -159,21 +159,6 @@ claude --dangerously-skip-permissions
 > 请分析 /your_path/target_binary，找出 flag
 ```
 
-## 项目结构
-
-```
-RevAgent/
-├── README.md
-├── CLAUDE.md                    # Agent 行为规训方法论 v2
-├── dynamic_mcp_server.py        # 动态分析 MCP Server (核心)
-├── bridge_mcp_ghidra.py         # Ghidra MCP 桥接层
-├── docs/
-│   ├── CHANGELOG.md             # 开发日志
-│   └── PROJECT_CONTEXT.md       # 架构与能力边界
-└── benchmarks/                  # 验证样本与测试结果
-    └── results.json
-```
-
 
 ## 致谢
 
