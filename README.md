@@ -16,32 +16,6 @@ RevAgent 的解法是**动静结合 + 行为规训**：让 Agent 在静态分析
 
 ## 架构
 ![Architecture](./docs/architecture.svg)
-```
-┌─────────────────────────────────────────────────┐
-│              LLM (Claude / 任意模型)              │
-│         + CLAUDE.md 行为规训方法论 (v2)            │
-└──────────┬──────────────────┬────────────────────┘
-           │ MCP (stdio)      │ MCP (stdio over SSH)
-           ▼                  ▼
-┌─────────────────┐  ┌──────────────────────────────┐
-│   静态分析端     │  │        动态分析端              │
-│  (Windows)      │  │    (Kali VM - 隔离环境)        │
-│                 │  │                                │
-│  GhidraMCP      │  │  dynamic_mcp_server.py v0.3   │
-│  (开源插件)      │  │  ├─ run_dynamic_trace          │
-│  163 tools      │  │  ├─ gdb_breakpoint_read        │
-│  + 自定义扩展    │  │  │  (5类断点 + watchpoint       │
-│                 │  │  │   + extra_commands + bt)     │
-│  交叉引用追踪    │  │  └─ disassemble_bytes          │
-│  内存批量读取    │  │                                │
-│  字符串/全局搜索  │  │  特性:                         │
-│                 │  │  · asyncio + 线程池并发         │
-│                 │  │  · 参数化接口 (防注入)           │
-│                 │  │  · 超时熔断                     │
-│                 │  │  · 环境变量注入                  │
-│                 │  │  · 反调试绕过                    │
-└─────────────────┘  └──────────────────────────────┘
-```
 
 **为什么是 MCP 而不是 Function Calling / LangChain？**
 
