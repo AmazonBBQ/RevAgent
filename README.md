@@ -119,7 +119,7 @@ asyncio event loop (主循环，处理 MCP 消息)
 # 在 Ghidra 中: File → Install Extensions → 选择 GhidraMCP.zip
 
 # 2. 动态端：部署到 Kali VM
-scp dynamic_mcp_server.py kali@<VM_IP>:/home/kali/lab/
+scp dynamic_mcp_server.py kali@<VM_IP>:/your_path/
 ssh kali@<VM_IP>
 pip install pwntools mcp-server
 
@@ -137,7 +137,7 @@ pip install pwntools mcp-server
     },
     "pwntools-dynamic": {
       "command": "ssh",
-      "args": ["kali@<VM_IP>", "python3", "/home/kali/lab/dynamic_mcp_server.py"],
+      "args": ["kali@<VM_IP>", "python3", "/your_path/dynamic_mcp_server.py"],
       "transport": "stdio"
     }
   }
@@ -156,7 +156,7 @@ claude --dangerously-skip-permissions
 /mcp  # 确认两端 ✓ Connected
 
 # 5. 开始分析
-> 请分析 /home/kali/lab/target_binary，找出 flag
+> 请分析 /your_path/target_binary，找出 flag
 ```
 
 ## 项目结构
@@ -174,17 +174,6 @@ RevAgent/
     └── results.json
 ```
 
-## Roadmap
-
-- [x] Phase 1：基础设施搭建（Ghidra MCP + 动态 MCP Server v0.3）
-- [x] CLAUDE.md v2：九类规则 + 三级熔断 + 实验科学模式
-- [ ] pwntools 断连检测与自动重连
-- [ ] `gdb_breakpoint_read` 增加 `stdin_data` 和 `continue_count` 参数
-- [ ] 自动计算 PIE base address
-- [ ] Agent 策略迭代：程序类型自动分类、输入格式探测流程
-- [ ] `patch_binary` / `run_interactive_script` 工具
-- [ ] Benchmark：10-20 题自动化评估
-- [ ] 技术 Blog
 
 ## 致谢
 
