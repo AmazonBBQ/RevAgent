@@ -15,7 +15,7 @@ RevAgent 通过 [MCP (Model Context Protocol)](https://modelcontextprotocol.io/)
 RevAgent 的解法是**动静结合 + 行为规训**：让 Agent 在静态分析遇到瓶颈时自动切换到动态调试，同时通过方法论框架约束 Agent 的推理路径，避免幻觉和无效循环。
 
 ## 架构
-
+![Architecture](./docs/architecture.svg)
 ```
 ┌─────────────────────────────────────────────────┐
 │              LLM (Claude / 任意模型)              │
